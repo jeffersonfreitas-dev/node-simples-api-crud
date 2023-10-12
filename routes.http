@@ -1,0 +1,25 @@
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{
+  "title": "O vento levou",
+  "duration": 200
+}
+
+###
+
+GET http://localhost:3000
+
+###
+
+PUT http://localhost:3000/videos/32e5bc6f-31f4-4161-bfc5-e6fbe060bc42
+Content-Type: application/json
+
+{
+  "title": "O vento não levou",
+  "duration": 210
+}
+
+###
+
+DELETE http://localhost:3000/videos/b933aa5f-1ee6-46a1-8cee-5d592c0f7158
