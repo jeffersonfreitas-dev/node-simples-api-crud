@@ -2,7 +2,7 @@ POST http://localhost:3000/videos
 Content-Type: application/json
 
 {
-  "title": "O vento levou",
+  "title": "Ameriacan Pie",
   "duration": 200
 }
 
@@ -12,14 +12,14 @@ GET http://localhost:3000
 
 ###
 
-PUT http://localhost:3000/videos/32e5bc6f-31f4-4161-bfc5-e6fbe060bc42
+PUT http://localhost:3000/videos/26a62751-0bcc-47b4-baaf-1e59b1118efa
 Content-Type: application/json
 
 {
-  "title": "O vento não levou",
-  "duration": 210
+  "title": "American Pie - O retorno",
+  "duration": 150
 }
 
 ###
 
-DELETE http://localhost:3000/videos/b933aa5f-1ee6-46a1-8cee-5d592c0f7158
+DELETE http://localhost:3000/videos/5d0415ae-d45f-4859-b26b-a55725fcd497

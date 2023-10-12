@@ -1,19 +1,20 @@
 import { fastify } from 'fastify'
-import { DatabaseMemory } from './database-memory.js';
+import { DatabasePostgres } from './database-postgres.js';
 
 const server = fastify({logger: true});
 
-const database = new DatabaseMemory();
+const database = new DatabasePostgres();
 
-server.get("/", async () => {
-  const videos = await database.list();
+server.get("/", async (req) => {
+  const query = req.query.search;
+  const videos = await database.list(query);
   return videos;
 })
 
 server.post("/videos", async (req, reply) => {
   const {title, duration} = req.body;
 
-  database.create({
+  await database.create({
     title,
     duration
   })
@@ -25,19 +26,19 @@ server.put("/videos/:id", async (req, reply) => {
   const id = req.params.id;
   const { title, duration } = req.body;
 
-  database.update(id, {title, duration})
+  await database.update(id, {title, duration})
   reply.status(204).send();
 })
 
 server.delete("/videos/:id", async (req, reply) => {
   const id = req.params.id;
-  database.delete(id);
+  await database.delete(id);
   reply.status(204).send();
 })
 
 
 try {
-  await server.listen({port: 3000});
+  await server.listen({port: process.env.PORT ?? 3000});
 } catch (error) {
   server.log.error(error);
   process.exit(1);
