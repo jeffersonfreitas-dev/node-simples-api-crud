@@ -38,7 +38,10 @@ server.delete("/videos/:id", async (req, reply) => {
 
 
 try {
-  await server.listen({port: process.env.PORT ?? 3000});
+  await server.listen({
+    host: '0.0.0.0',
+    port: process.env.PORT ?? 3000
+  });
 } catch (error) {
   server.log.error(error);
   process.exit(1);
